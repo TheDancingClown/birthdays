@@ -5,10 +5,10 @@
 require 'birthday_list'
 
 describe BirthdayList do
+let(:list) { BirthdayList.new }
 
   describe '#store' do
     it 'stores a name and birthday in a list' do
-      list = BirthdayList.new
       list.store("name", "birthday")
       expect(list.birthdays).to include({"name" => "birthday"})
     end
@@ -16,7 +16,6 @@ describe BirthdayList do
 
   describe '#show' do
     it 'shows a list of names and birthdays' do
-      list = BirthdayList.new
       list.store("name", "birthday")
       expect{ list.show }.to output("#{"birthday"}: #{"name"}\n").to_stdout
     end
@@ -24,7 +23,6 @@ describe BirthdayList do
 
   describe '#check' do
     it 'returns a name when passed a date' do
-      list = BirthdayList.new
       list.store("name", "birthday")
       expect(list.check("birthday")).to eq("name" => "birthday")
     end
